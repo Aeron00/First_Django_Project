@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/bootstrap.css">
+    <title>Data show</title>
+</head>
+
+<body>
+    <div class="container" style="padding: 50px;">
+        <form method="POST" action="search" style="display:inline">
+            {% csrf_token %}
+            <td>
+            <td><input name="uname" placeholder="Enter Name or ID"></td>
+            <td><button type="search" class="btn btn-outline-secondary">SEARCH</button></td>
+            </td>
+        </form>
+        <a href="register/"> <button type="button" class="btn btn-outline-info mx-5"> Add new data</button></a>
+        <button type="button" class="btn btn-outline-primary mx-4" onclick="display()"> Show all data</button>
+        <button type="button" class="btn btn-outline-success mx-4" onclick="display1()">Registered</button>
+        <button type="button" class="btn btn-outline-dark mx-4" onclick="display2()">Login</button>
+        <a href="/"><button type="button" class="btn btn-outline-warning mx-4">Home page</button></a>
+
+        <hr>
+
+        <div id="reg" style="display: none;">
+            <b><p>Registered users data</p></b>
+            <table class="table table-dark table-striped;">
+                <tr>
+                    <th>NAME</th>
+                    <th>EMAIL</th>
+                    <th>PASSWORD</th>
+                    <th>ADDRESS</th>
+                    <th>EDIT DATA</th>
+                    <th>DELETE DATA</th>
+                </tr>
+                {% for i in information %}
+                <tr>
+                    <td> {{i.uname}} </td>
+                    <td> {{i.uemail}} </td>
+                    <td> {{i.upass}} </td>
+                    <td> {{i.uadd}} </td>
+                    <td> <a href="edit/{{i.id}}"> <button type="button" class="btn btn-outline-light"> Update </button>
+                        </a></td>
+                    <td> <a href="delete/{{i.id}}"> <button type="button" class="btn btn-outline-danger"> Delete
+                            </button> </a></td>
+                </tr>
+                {% endfor %}
+            </table>
+            <hr>
+        </div>
+        <div id="log" style="display: none;">
+            <b><p>Loged in users data</p></b>
+            <table class="table table-success table-striped;">
+                <tr>
+                    <th>NAME</th>
+                    <th>PASSWORD</th>
+                </tr>
+                {% for i in login %}
+                <tr>
+                    <td> {{i.uname}} </td>
+                    <td> {{i.upass}} </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <script>
+        var log = document.getElementById('log')
+        var reg = document.getElementById('reg')
+        function display1() {
+            reg.style.display = 'block'
+            log.style.display = 'none'
+        }
+        function display2() {
+            reg.style.display = 'hidden'
+            log.style.display = 'none'
+        }
+        function display(){
+            reg.style.display = 'block'
+            log.style.display = 'block'
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/static/bootstrap.css">
+</head>
+<style>
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: rgb(136, 121, 121);
+    }
+    hr {
+      border: 1px solid #f1f1f1;
+      margin-bottom: 20px;
+    }
+    a {
+      color: dodgerblue;
+    }
+</style>
+
+<body>
+    <form method="POST" action="loginsave">
+        {% csrf_token %}
+        <div class="container">
+            <center><h1>Login Here</h1></center>
+            <p>Please fill this form to login</p>
+            <hr><br>
+
+            <label class="form-label" for="Name"><b>Username</b></label>
+            {{form.uname}}  <br>
+            
+            <label class="form-label" for="Password"><b>Password</b></label>
+            {{form.upass}} <br><hr>
+            
+            <center><br><button class="btn btn-outline-warning" type="submit">Login</button><br>
+ 
+            <center><br><a href="{{ registration }}">Click here</a> for Registeration</center>
+        </div>
+    </form>
+</body>
+</html>

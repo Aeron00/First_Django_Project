@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/bootstrap.css">
+</head>
+<body style="background-color: darkturquoise;">
+    <form method="POST" action="/update/{{data.id}}" class="container" style="padding-left:550px;">
+        {% csrf_token %}
+    
+    <table>
+        <h3 style="color:grey; padding-left:10px;">Update Data</h3>
+            <tr>
+                <td><hr><b><label for="name"> NAME </label></b>
+                <input id="name" class="form-control" name="uname" required value="{{ data.uname }}"> </td>
+            </tr>
+            <tr>
+                <td> <br><b><label for="email"> EMAIL </label></b>
+                <input id="email" class="form-control" name="uemail" required value="{{ data.uemail }}"> </td>
+            </tr>
+            <tr>
+                <td> <br><b><label for="password"> PASSWORD </label></b>
+                <input id="password" class="form-control" name="upass" required value="{{ data.upass }}"> </td>
+            </tr>
+            <tr>
+                <td> <br><b><label for="address"> ADDRESS </label></b>
+                <input id="address" class="form-control" name="uadd" required value="{{ data.uadd }}"> </td>
+            </tr>
+            <tr>
+                <td><hr><br><center><button type="submit" class="btn btn-outline-success"> Update </button></center></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
